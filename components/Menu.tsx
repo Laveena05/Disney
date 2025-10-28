@@ -55,7 +55,7 @@ export default function Menu() {
       <nav className={`${styles.navbar} ${isOpen ? styles.change : ''}`}>
         <div className={styles.navList}>
           <a href="#home" onClick={(e) => smoothScroll(e, '#home')}>Home</a>
-          <a href="#about" onClick={(e) => smoothScroll(e, '#about')}>About</a>
+          <a href="#about" onClick={(e) => smoothScroll(e, '#about')}>Popular Toys</a>
           <a href="#projects" onClick={(e) => smoothScroll(e, '#projects')}>Gallery</a>
           <a href="#contact" onClick={(e) => smoothScroll(e, '#contact')}>Contact</a>
         </div>
