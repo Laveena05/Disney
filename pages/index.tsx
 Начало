@@ -1,0 +1,58 @@
+import { GetServerSideProps, GetStaticProps } from 'next'
+import Menu from '../components/Menu'
+import Hero from '../components/Hero'
+import PopularToys from '../components/PopularToys'
+import DailyAdvice from '../components/DailyAdvice'
+import Gallery from '../components/Gallery'
+import Footer from '../components/Footer'
+
+// This function demonstrates SSR (Server-Side Rendering)
+export const getServerSideProps: GetServerSideProps = async () => {
+  // Fetch advice from an API or database on each request
+  const advice = [
+    "You hereby have permission to stop worrying about your checklist—doing the laundry, pumping, buying diapers—and learn to be present with your baby. Enjoy your precious moments together 😊",
+    "Expect odd food habits. Offer a variety. Don't push, don't panic. They'll eat when they're hungry 👍"
+  ]
+
+  return {
+    props: {
+      advice
+    }
+  }
+}
+
+interface HomeProps {
+  advice: string[]
+}
+
+export default function Home({ advice }: HomeProps) {
+  return (
+    <div className="container">
+      <Menu />
+      <Hero />
+      <PopularToys />
+      <DailyAdvice advice={advice} />
+      <Gallery />
+      <Footer />
+    </div>
+  )
+}
+
+// Alternative: Using ISR (Incremental Static Regeneration)
+// Uncomment below and comment out getServerSideProps to use ISR instead
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const advice = [
+//     "You hereby have permission to stop worrying about your checklist—doing the laundry, pumping, buying diapers—and learn to be present with your baby. Enjoy your precious moments together 😊",
+//     "Expect odd food habits. Offer a variety. Don't push, don't panic. They'll eat when they're hungry 👍"
+//   ]
+
+//   return {
+//     props: {
+//       advice
+//     },
+//     // Regenerate the page at most once every hour
+//     revalidate: 3600 // in seconds
+//   }
+// }
+

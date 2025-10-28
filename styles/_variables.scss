@@ -1,0 +1,61 @@
+// Color Hunt Palette: https://colorhunt.co/palette/4e56c09b5de0d78feefdcffa
+$color-primary: #4E56C0;      // Deep Blue - Primary color
+$color-secondary: #9B5DE0;    // Purple - Secondary accent
+$color-accent: #D78FEE;       // Light Purple - Accent color
+$color-light: #FDCFFA;        // Light Pink - Light accents
+
+// Legacy color names mapped to new palette for compatibility
+$color-cyan: #D78FEE;         // Light Purple
+$color-orange: #9B5DE0;       // Purple
+$color-red: #4E56C0;          // Deep Blue
+$color-green: #FDCFFA;        // Light Pink
+
+// Neutral colors
+$color-white: #fff;
+$color-dark: #333;
+$color-grey: #555;
+
+@mixin flexLayout($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+%before-after {
+  content: attr(data-letter);
+  position: absolute;
+  left: 0;
+  transition: transform 0.5s;
+}
+
+@mixin response($breakpoint) {
+  @if ($breakpoint == xl) {
+    @media (max-width: 1500px) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == lg) {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == md) {
+    @media (max-width: 900px) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == sm) {
+    @media (max-width: 660px) {
+      @content;
+    }
+  }
+
+  @if ($breakpoint == xs) {
+    @media (max-width: 500px) {
+      @content;
+    }
+  }
+}

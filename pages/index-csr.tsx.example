@@ -1,0 +1,40 @@
+/**
+ * CSR (Client-Side Rendering) Example
+ * 
+ * To use this approach:
+ * 1. Copy this file to pages/index.tsx
+ * 2. This strategy:
+ *    - Static page structure (SSG)
+ *    - Dynamic content fetched on client-side
+ *    - Uses DailyAdviceCSR component with useEffect
+ */
+
+import Menu from '../components/Menu'
+import Hero from '../components/Hero'
+import PopularToys from '../components/PopularToys'
+import DailyAdviceCSR from '../components/DailyAdviceCSR'
+import Gallery from '../components/Gallery'
+import Footer from '../components/Footer'
+
+/**
+ * CSR Approach - No Server-Side Data Fetching
+ * DailyAdviceCSR component handles its own data fetching using useEffect
+ * Content loads on the client-side after page hydration
+ */
+export default function Home() {
+  return (
+    <div className="container">
+      <Menu /> {/* ✅ CSR - Client-side rendering: Interactive menu */}
+      <Hero /> {/* ✅ SSG - Static Site Generation: Pre-rendered */}
+      <PopularToys /> {/* ✅ SSG - Static Site Generation: Pre-rendered */}
+      <DailyAdviceCSR /> {/* ✅ CSR - Client-Side Rendering: Fetches data on client with useEffect */}
+      <Gallery /> {/* ✅ SSG - Static Site Generation: Pre-rendered */}
+      <Footer /> {/* ✅ SSG - Static Site Generation: Pre-rendered */}
+    </div>
+  )
+}
+
+// Rendering Strategy Summary:
+// - CSR (Client-Side Rendering): Menu and DailyAdviceCSR - rendered on client
+// - SSG (Static Site Generation): Hero, PopularToys, Gallery, Footer - pre-rendered at build time
+
