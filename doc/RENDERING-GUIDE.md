@@ -13,17 +13,16 @@ This document explains all the different page rendering methods available in the
 
 ## Overview
 
-The Disney Website supports multiple rendering strategies to demonstrate Next.js capabilities:
-- **SSR** (Server-Side Rendering)
-- **SSG** (Static Site Generation)
-- **ISR** (Incremental Static Regeneration)
-- **CSR** (Client-Side Rendering)
+The Disney Website uses **SSR (Server-Side Rendering)** as the primary rendering method, with individual components using the optimal strategy for their functionality:
+- **SSR** (Server-Side Rendering) - For the main page
+- **CSR** (Client-Side Rendering) - For interactive components
+- **SSG** (Static Site Generation) - For static content
 
 ---
 
 ## Rendering Methods
 
-### 1. **SSR - Server-Side Rendering**
+### 1. **SSR - Server-Side Rendering** ✅ (Currently Active)
 
 **Used by**: Main page (`pages/index.tsx`)
 
@@ -142,27 +141,13 @@ export default function Home() {
 
 ---
 
-## How to Switch Between Methods
+## Current Setup
 
-### Option 1: Rename Current Index (Recommended)
-
-```bash
-# Backup current SSR version
-mv pages/index.tsx pages/index-ssr.tsx
-
-# Activate ISR version
-mv pages/index-isr.tsx.example pages/index.tsx
-
-# Or activate CSG version
-mv pages/index-ssg.tsx.example pages/index.tsx
-
-# Or activate CSR version
-mv pages/index-csr.tsx.example pages/index.tsx
-```
-
-### Option 2: Use Multiple Ports
-
-You could run multiple instances on different ports, but Next.js typically uses one `pages/index.tsx`.
+The Disney Website uses **SSR (Server-Side Rendering)** as the primary method because it provides:
+- ✅ Fresh data on every request
+- ✅ Excellent SEO
+- ✅ Best balance of performance and features
+- ✅ Support for all interactive components
 
 ---
 
@@ -293,22 +278,17 @@ You could run multiple instances on different ports, but Next.js typically uses 
 ## Quick Test Commands
 
 ```bash
-# Current setup (SSR)
+# Start development server
 npm run dev
 
-# View all available rendering examples
-ls pages/*.example
-
-# Switch to ISR
-mv pages/index.tsx pages/index-ssr-backup.tsx && \
-mv pages/index-isr.tsx.example pages/index.tsx
-
-# Build for production testing
+# Build for production
 npm run build && npm run start
 
-# Restore SSR
-mv pages/index.tsx pages/index-isr.tsx && \
-mv pages/index-ssr-backup.tsx pages/index.tsx
+# View pages directory
+ls pages/
+
+# Check components
+ls components/
 ```
 
 ---
@@ -326,8 +306,9 @@ mv pages/index-ssr-backup.tsx pages/index.tsx
 
 ## Notes
 
-- All interactive features work regardless of rendering method
+- All interactive features work seamlessly with SSR
 - The page dynamically uses the best strategy for each component
-- SSR is currently active for the best balance of features
-- Example files can be renamed to `.tsx` to test them
+- SSR provides the optimal balance of SEO, performance, and features
+- Individual components use CSR for interactivity
+- The Disney Website is production-ready as-is
 

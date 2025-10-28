@@ -7,72 +7,32 @@
 
 ---
 
-## 📋 Available Rendering Methods
+## 📋 Rendering Method
 
-### 1. SSR - Server-Side Rendering
-**File**: `pages/index.tsx` ✅ (Currently Active)
+### SSR - Server-Side Rendering ✅ (Active)
 
+**File**: `pages/index.tsx`  
 **Page**: Main Disney Website  
 **Method**: `getServerSideProps`  
 **When runs**: Every request  
-**Components**:
-- Menu (CSR)
-- Hero (SSG - Static)
-- PopularToys (CSR - Interactive)
-- DailyAdvice (SSR - Dynamic)
-- Gallery (CSR - Interactive)
-- Footer (CSR - Interactive)
+**Why SSR?**: Best balance of SEO, fresh data, and interactive features
+
+**Components Using Different Strategies**:
+- Menu (CSR) - Interactive state management
+- Hero (SSG) - Static content with background image
+- PopularToys (CSR) - Search, filter, cart functionality
+- DailyAdvice (SSR) - Fresh data on each request
+- Gallery (CSR) - Lightbox interaction
+- Footer (CSR) - Contact form with validation
 
 ---
 
-### 2. SSG - Static Site Generation
-**File**: `pages/index-ssg.tsx.example` 📄
+## 📚 Other Rendering Methods
 
-**Status**: Example file (not active)  
-**Method**: `getStaticProps`  
-**When runs**: Build time  
-**To activate**: Rename to `index.tsx`
-
----
-
-### 3. ISR - Incremental Static Regeneration
-**File**: `pages/index-isr.tsx.example` 📄
-
-**Status**: Example file (not active)  
-**Method**: `getStaticProps` with `revalidate`  
-**When runs**: Build time + periodic revalidation  
-**To activate**: Rename to `index.tsx`
-
----
-
-### 4. CSR - Client-Side Rendering
-**File**: `pages/index-csr.tsx.example` 📄
-
-**Status**: Example file (not active)  
-**Method**: Client-side fetch with API routes  
-**When runs**: Browser  
-**To activate**: Rename to `index.tsx`
-
----
-
-## 🔄 Switching Between Methods
-
-```bash
-# Backup current SSR
-mv pages/index.tsx pages/index-ssr-backup.tsx
-
-# Activate ISR
-mv pages/index-isr.tsx.example pages/index.tsx
-
-# Activate CSG
-mv pages/index-ssg.tsx.example pages/index.tsx
-
-# Activate CSR
-mv pages/index-csr.tsx.example pages/index.tsx
-
-# Restore SSR
-mv pages/index-ssr-backup.tsx pages/index.tsx
-```
+While only SSR is implemented, you can learn about:
+- **SSG** - Static Site Generation (pre-render at build)
+- **ISR** - Incremental Static Regeneration (periodic updates)
+- **CSR** - Client-Side Rendering (browser-side rendering)
 
 ---
 
@@ -88,8 +48,8 @@ npm run build
 # Start production server
 npm run start
 
-# View examples
-ls pages/*.example
+# View pages
+ls pages/
 ```
 
 ---
@@ -122,21 +82,22 @@ ls pages/*.example
 
 ```
 pages/
-├── index.tsx                    ← SSR (Active)
-├── index-csr.tsx.example        ← CSR (Example)
-├── index-isr.tsx.example        ← ISR (Example)
-├── index-ssr.tsx.example        ← SSR (Example)
+├── index.tsx                    ← SSR (Active - Main Page)
 ├── _app.tsx                     ← App wrapper
 └── api/
     └── advice.ts                ← API route
 
 components/
-├── Menu.tsx                     ← CSR
-├── Hero.tsx                     ← SSG
-├── PopularToys.tsx              ← CSR
-├── DailyAdvice.tsx              ← CSR (with SSR data)
-├── Gallery.tsx                  ← CSR
-└── Footer.tsx                   ← CSR
+├── Menu.tsx                     ← CSR (Sidebar, theme toggle)
+├── Hero.tsx                     ← SSG (Disney heading)
+├── PopularToys.tsx              ← CSR (Cart, search, filter)
+├── DailyAdvice.tsx              ← CSR (Dynamic rotation)
+├── Gallery.tsx                  ← CSR (Lightbox)
+└── Footer.tsx                   ← CSR (Contact form)
+
+doc/
+├── RENDERING-GUIDE.md           ← Complete rendering guide
+└── QUICK-REFERENCE.md           ← This file
 ```
 
 ---
